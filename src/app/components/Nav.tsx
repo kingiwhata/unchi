@@ -14,7 +14,10 @@ export default function Nav({
                 className="flex flex-col justify-center"
                 onClick={() =>
                     handleClick(
-                        getPreviousMonth(date.getMonth(), date.getFullYear()),
+                        getPreviousMonth(
+                            date.getMonth() - 1,
+                            date.getFullYear(),
+                        ),
                     )
                 }
             >

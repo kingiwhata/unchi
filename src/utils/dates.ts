@@ -10,6 +10,6 @@ export function getDates(month: number, year: number) {
 
 export function getPreviousMonth(month: number, year: number) {
     const firstOfMonth = new Date(year, month, 1);
-    firstOfMonth.setDate(firstOfMonth.getDate() - firstOfMonth.getDay());
+    firstOfMonth.setDate(firstOfMonth.getDate());
     return firstOfMonth;
 }
