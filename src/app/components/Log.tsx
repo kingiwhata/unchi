@@ -1,3 +1,4 @@
+import Handler from '@/lib/db';
 import React from 'react';
 
 export default function Log({ date }: { date: Date }) {
@@ -29,7 +30,9 @@ export default function Log({ date }: { date: Date }) {
                     </h2>
                     <p>x s a s xz</p>
                 </div>
-                <button type="submit">Save</button>
+                <button type="submit" formAction={Handler}>
+                    Save
+                </button>
             </form>
         </section>
     );
