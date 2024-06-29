@@ -1,4 +1,4 @@
-import Handler from '@/lib/db';
+import InsertLog from '@/lib/db';
 import React from 'react';
 
 export default function Log({ date }: { date: Date }) {
@@ -13,6 +13,7 @@ export default function Log({ date }: { date: Date }) {
                     <h2 className="flex justify-center text-xs font-bold">
                         Time
                     </h2>
+                    <input id="dateTime" type="text"></input>
                     <p>7:30PM</p>
                 </div>
                 <div>
@@ -22,6 +23,7 @@ export default function Log({ date }: { date: Date }) {
                     <p className="flex flex-row w-full text-3xl tracking-widest">
                         🐭🐰🐶🐮🐻
                     </p>
+                    <input id="stickers" type="text"></input>
                 </div>
 
                 <div className="flex justify-center items-center flex-col">
@@ -30,7 +32,7 @@ export default function Log({ date }: { date: Date }) {
                     </h2>
                     <p>x s a s xz</p>
                 </div>
-                <button type="submit" formAction={Handler}>
+                <button type="submit" formAction={InsertLog}>
                     Save
                 </button>
             </form>
