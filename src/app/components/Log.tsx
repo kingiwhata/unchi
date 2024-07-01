@@ -19,7 +19,7 @@ export default function Log({ date }: { date: Date }) {
         <section className="flex flex-col justify-center items-center flex-1 m-2 bg-[url('/bg-unchi.jpg')] rounded-[16px]">
             <form
                 className="flex flex-col justify-center items-center gap-3"
-                action={insertLog}
+                action={(formData) => insertLog(stickers, formData)}
             >
                 <div className="flex text-2xl font-bold">24th June 2024</div>
                 <div className="flex justify-center items-center flex-col">
