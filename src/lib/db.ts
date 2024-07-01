@@ -2,15 +2,16 @@
 
 import { sql } from '@vercel/postgres';
 
-export default async function InsertLog(formData: FormData) {
+export default async function insertLog(formData: FormData) {
+    console.log(formData);
     const createTable = await sql`CREATE TABLE IF NOT EXISTS Log (
         id SERIAL PRIMARY KEY,
         stickers TEXT [],
-        notes TEXT [],
+        notes TEXT,
         date_time TIMESTAMP,
         created_at TIMESTAMP
     )`;
 
     await sql`INSERT INTO log (date_time, created_at, notes, stickers)
-        VALUES (${formData.get('dateTime')}, ${formData.get('createdAt')}, ${formData.get('notes')}, ARRAY['ssss','asdasdasdsa'])`;
+        VALUES (to_timestamp(${Date.now()} / 1000.0), to_timestamp(${Date.now()} / 1000.0), ${formData.get('noteText')}, ARRAY['SSSSS','sss'])`;
 }
