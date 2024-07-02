@@ -13,8 +13,6 @@ export default function Log({ date }: { date: Date }) {
         setStickers([...stickers, sticker]);
     };
 
-    //insertLog.bind(null, stickers);
-
     return (
         <section className="flex flex-col justify-center items-center flex-1 m-2 bg-[url('/bg-unchi.jpg')] rounded-[16px]">
             <form
@@ -26,7 +24,7 @@ export default function Log({ date }: { date: Date }) {
                     <h2 className="flex justify-center text-xs font-bold">
                         Time
                     </h2>
-                    <input id="dateTime" type="time" name="dateTime"></input>
+                    <input id="time" type="time" name="time"></input>
                 </div>
                 <div>
                     <h2 className="flex justify-center text-xs font-bold">
