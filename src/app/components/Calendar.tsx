@@ -1,8 +1,13 @@
-'use client';
 import { getDates } from '@/utils/dates';
 import React, { useState } from 'react';
 
-export default function Calendar({ date }: { date: Date }) {
+export default function Calendar({
+    date,
+    handleSelected,
+}: {
+    date: Date;
+    handleSelected: (date: Date) => void;
+}) {
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     return (
         <section className="h-[390px] outline outline-4 mx-2 mb-2 border-black rounded-[16px]">
@@ -20,6 +25,7 @@ export default function Calendar({ date }: { date: Date }) {
                             <div
                                 key={i}
                                 className="text-sm border-b border-r  border-black "
+                                onClick={() => handleSelected(date)}
                             >
                                 {date.getDate()}
                             </div>

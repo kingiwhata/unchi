@@ -19,7 +19,9 @@ export default function Log({ date }: { date: Date }) {
                 className="flex flex-col justify-center items-center gap-3"
                 action={(formData) => insertLog(stickers, formData)}
             >
-                <div className="flex text-2xl font-bold">24th June 2024</div>
+                <div className="flex text-2xl font-bold">
+                    {date.toDateString()}
+                </div>
                 <div className="flex justify-center items-center flex-col">
                     <h2 className="flex justify-center text-xs font-bold">
                         Time
