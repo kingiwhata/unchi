@@ -2,9 +2,7 @@
 import Calendar from './components/Calendar';
 import Nav from './components/Nav';
 import { useState } from 'react';
-import { getDates } from '@/utils/dates';
 import Log from './components/Log';
-import { getAllLogs } from '@/lib/db';
 
 export default function Home() {
     const [date, setDate] = useState(new Date());
