@@ -15,7 +15,7 @@ export default async function insertLog(
         notes TEXT,
         date_time TIMESTAMP,
         created_at TIMESTAMP,
-        user_id uuid DEFAULT
+        user_id UUID 
     )`;
     await sql`INSERT INTO log (date_time, created_at, notes, stickers, user_id)
         VALUES (to_timestamp(${Date.now()} / 1000.0), to_timestamp(${Date.now()} / 1000.0), ${formData.get('noteText')}, ${stickers}, ${user_id})`;
