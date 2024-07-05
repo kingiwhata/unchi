@@ -1,5 +1,6 @@
+import { getAllLogs } from '@/lib/db';
 import { getDates } from '@/utils/dates';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Calendar({
     date,
@@ -9,6 +10,18 @@ export default function Calendar({
     handleSelected: (date: Date) => void;
 }) {
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const [allLogs, setAllLogs] = useState([]);
+
+    const getSession = async () => {
+        const userLogs = await getAllLogs();
+        setAllLogs(userLogs);
+        console.log(allLogs);
+    };
+
+    useEffect(() => {
+        getSession();
+    }, []);
+
     return (
         <section className="h-[390px] outline outline-4 mx-2 mb-2 border-black rounded-[16px]">
             <div className="flex justify-between h-7 border-black border-b bg-white">
@@ -27,6 +40,8 @@ export default function Calendar({
                                 className="text-sm border-b border-r  border-black "
                                 onClick={() => handleSelected(date)}
                             >
+                                {allLogs.date_time}
+
                                 {date.getDate()}
                             </div>
                         );

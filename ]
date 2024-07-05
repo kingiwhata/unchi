@@ -1,3 +1,4 @@
+//@ts-nocheck
 'use server';
 import { UUID, randomUUID } from 'crypto';
 import { sql } from '@vercel/postgres';
@@ -12,11 +13,11 @@ export default async function insertLog(
     const [day, month, year] = dateString.split('/');
     const [hours, minutes] = formData.get('time').split(':');
     const date = new Date(+year, +month - 1, +day, +hours, +minutes, 0);
-    let userID = '';
+    let userID = randomUUID();
     if (cookies().has('uuid')) {
         userID = cookies().get('uuid').value;
     } else {
-        userID = cookies().set('uuid', userID);
+        cookies().set('uuid', userID);
     }
     const createTable = await sql`CREATE TABLE IF NOT EXISTS Log (
         id SERIAL PRIMARY KEY,
@@ -31,14 +32,13 @@ export default async function insertLog(
 }
 
 export async function getAllLogs() {
-    const userID = cookies().get('uuid')!.value;
-    const allUserLogs = await sql`SELECT * FROM log WHERE user_id=${userID}`;
-    return allUserLogs;
-}
-
-export async function setUserLog() {
+    let userID = randomUUID();
     if (cookies().has('uuid')) {
-        return;
+        userID = cookies().get('uuid').value;
+    } else {
+        cookies().set('uuid', userID);
     }
-    cookies().set('uuid', randomUUID());
+    const allUserLogs = await sql`SELECT * FROM log WHERE user_id=${userID}`;
+    console.log(allUserLogs);
+    return allUserLogs;
 }
