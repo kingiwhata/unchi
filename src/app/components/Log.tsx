@@ -5,10 +5,12 @@ import { useState } from 'react';
 
 export default function Log({ date }: { date: Date }) {
     const stickerArray = ['🐭', '🐰', '🐶', '🐮', '🐻'];
-    const [stickers, setStickers] = useState([]);
+    const initialStickers: string[] = [];
+    const [stickers, setStickers] = useState(initialStickers);
 
     const handleStickerClick = (e: any) => {
         const sticker = e.target.innerText;
+        if (stickers.includes(sticker)) return;
         //@ts-ignore
         setStickers([...stickers, sticker]);
     };
