@@ -3,11 +3,11 @@ import Nav from './components/Nav';
 import Calendar from './components/Calendar';
 import Log from './components/Log';
 import { useEffect, useState } from 'react';
-import { setUserLog } from '@/lib/db';
+import { initUserLog } from '@/lib/db';
 
 export default function Home() {
     useEffect(() => {
-        setUserLog();
+        initUserLog();
     }, []);
 
     const [date, setDate] = useState(new Date());

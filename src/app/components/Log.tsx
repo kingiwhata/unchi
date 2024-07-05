@@ -26,7 +26,7 @@ export default function Log({ date }: { date: Date }) {
                     <h2 className="flex justify-center text-xs font-bold">
                         Time
                     </h2>
-                    <input id="time" type="time" name="time"></input>
+                    <input id="time" type="time" name="time" required></input>
                 </div>
                 <div>
                     <h2 className="flex justify-center text-xs font-bold">

@@ -1,4 +1,5 @@
 import { getAllLogs } from '@/lib/db';
+import { QueryResultRow } from '@vercel/postgres';
 import { getDates } from '@/utils/dates';
 import React, { useState, useEffect } from 'react';
 
@@ -10,12 +11,12 @@ export default function Calendar({
     handleSelected: (date: Date) => void;
 }) {
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    const [allLogs, setAllLogs] = useState([]);
+    const logsQuery: QueryResultRow[] = [];
+    const [allLogs, setAllLogs] = useState(logsQuery);
 
     const getSession = async () => {
         const userLogs = await getAllLogs();
-        setAllLogs(userLogs);
-        console.log(allLogs);
+        setAllLogs(userLogs || []);
     };
 
     useEffect(() => {
@@ -40,7 +41,16 @@ export default function Calendar({
                                 className="text-sm border-b border-r  border-black "
                                 onClick={() => handleSelected(date)}
                             >
-                                {allLogs.date_time}
+                                {allLogs.map((log: any, i: number) => (
+                                    <div>
+                                        {log.date_time.toDateString() ==
+                                        date.toDateString() ? (
+                                            <p>{log.stickers[0]}</p>
+                                        ) : (
+                                            <p></p>
+                                        )}
+                                    </div>
+                                ))}
 
                                 {date.getDate()}
                             </div>
