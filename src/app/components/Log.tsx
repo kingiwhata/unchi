@@ -29,7 +29,13 @@ export default function Log({ date }: { date: Date }) {
                     <h2 className="flex justify-center text-xs font-bold">
                         Time
                     </h2>
-                    <input id="time" type="time" name="time" required></input>
+                    <input
+                        id="time"
+                        type="time"
+                        name="time"
+                        defaultValue={new Date().toTimeString().substring(0, 5)}
+                        required
+                    ></input>
                 </div>
                 <div>
                     <h2 className="flex justify-center text-xs font-bold">
