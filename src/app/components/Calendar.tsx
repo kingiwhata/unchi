@@ -27,7 +27,10 @@ export default function Calendar({
         <section className="h-[390px] outline outline-4 mx-2 mb-2 border-black rounded-[16px]">
             <div className="flex justify-between h-7 border-black border-b bg-white">
                 {daysOfWeek.map((day: string, i: number) => (
-                    <div key={i} className="flex-1">
+                    <div
+                        key={i}
+                        className="font-[marker] flex justify-center flex-1"
+                    >
                         {day}
                     </div>
                 ))}
