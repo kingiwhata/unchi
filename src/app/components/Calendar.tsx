@@ -46,7 +46,7 @@ export default function Calendar({
                                     <div key={i}>
                                         {log.date_time.toDateString() ==
                                         date.toDateString() ? (
-                                            <p>{log.stickers[0]}</p>
+                                            <p>{log.sticker}</p>
                                         ) : (
                                             <p></p>
                                         )}
