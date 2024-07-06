@@ -22,7 +22,7 @@ export default function Log({ date }: { date: Date }) {
                 className="flex flex-col justify-center items-center gap-3"
                 action={insertToLog}
             >
-                <div className="flex text-2xl font-bold">
+                <div className="flex text-3xl font-bold">
                     {date.toDateString()}
                 </div>
                 <div className="flex justify-center items-center flex-col">
@@ -30,6 +30,7 @@ export default function Log({ date }: { date: Date }) {
                         Time
                     </h2>
                     <input
+                        className="bg-transparent font-bold text-2xl"
                         id="time"
                         type="time"
                         name="time"
@@ -61,9 +62,19 @@ export default function Log({ date }: { date: Date }) {
                     <h2 className="flex justify-center text-xs font-bold">
                         Notes
                     </h2>
-                    <input id="noteText" name="noteText"></input>
+                    <input
+                        className="p-2 rounded-lg bg-transparent placeholder-[rgb(112,79,61)]"
+                        placeholder="Enter Text..."
+                        id="noteText"
+                        name="noteText"
+                    ></input>
                 </div>
-                <button type="submit">Save</button>
+                <button
+                    className="p-2 w-1/2 text-2xl font-bold rounded-lg"
+                    type="submit"
+                >
+                    Save
+                </button>
             </form>
         </section>
     );

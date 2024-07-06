@@ -20,6 +20,7 @@ export default async function insertLog(
         let userID = cookies().get('uuid')!.value;
         await sql`INSERT INTO log (date_time, created_at, notes, sticker, user_id)
         VALUES (to_timestamp(${date.getTime()} / 1000.0), to_timestamp(${Date.now()} / 1000.0), ${formData.get('noteText')}, ${sticker}, ${userID})`;
+        revalidatePath('/');
     } catch (err) {
         console.error('Inserting in to log error: ', err);
     } finally {
