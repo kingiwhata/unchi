@@ -11,15 +11,16 @@ export default function Log({ date }: { date: Date }) {
     const handleStickerClick = (e: any) => {
         const sticker = e.target.innerText;
         if (stickers.includes(sticker)) return;
-        //@ts-ignore
         setStickers([...stickers, sticker]);
     };
+
+    const insertToLog = insertLog.bind(null, stickers, date);
 
     return (
         <section className="flex flex-col justify-center items-center flex-1 m-2 bg-[url('/bg-unchi.jpg')] rounded-[16px]">
             <form
                 className="flex flex-col justify-center items-center gap-3"
-                action={(formData) => insertLog(stickers, date, formData)}
+                action={insertToLog}
             >
                 <div className="flex text-2xl font-bold">
                     {date.toDateString()}

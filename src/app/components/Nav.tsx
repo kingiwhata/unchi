@@ -44,6 +44,7 @@ export default function Nav({
             </div>
             <div className="flex flex-row w-fit">
                 <Image
+                    className="h-auto w-auto"
                     src="/unchicat.png"
                     width={80}
                     height={80}
@@ -51,6 +52,7 @@ export default function Nav({
                 />
 
                 <Image
+                    className="h-auto w-auto"
                     src="/unchidog.png"
                     width={80}
                     height={80}
