@@ -5,16 +5,16 @@ import { useState } from 'react';
 
 export default function Log({ date }: { date: Date }) {
     const stickerArray = ['🐭', '🐰', '🐶', '🐮', '🐻'];
-    const initialStickers: string[] = [];
-    const [stickers, setStickers] = useState(initialStickers);
+    const initialSticker: string = '';
+    const [currentSticker, setCurrentSticker] = useState(initialSticker);
 
     const handleStickerClick = (e: any) => {
-        const sticker = e.target.innerText;
-        if (stickers.includes(sticker)) return;
-        setStickers([...stickers, sticker]);
+        const clickedSticker = e.target.innerText;
+        if (clickedSticker == currentSticker) return;
+        setCurrentSticker(clickedSticker);
     };
 
-    const insertToLog = insertLog.bind(null, stickers, date);
+    const insertToLog = insertLog.bind(null, currentSticker, date);
 
     return (
         <section className="flex flex-col justify-center items-center flex-1 m-2 bg-[url('/bg-unchi.jpg')] rounded-[16px]">
@@ -35,9 +35,16 @@ export default function Log({ date }: { date: Date }) {
                     <h2 className="flex justify-center text-xs font-bold">
                         Sticker
                     </h2>
-                    <div className="flex flex-row w-full text-3xl gap-4">
+                    <div className="flex flex-row w-full text-3xl gap-2">
                         {stickerArray.map((sticker, i) => (
-                            <p key={i} onClick={handleStickerClick}>
+                            <p
+                                className="cursor-pointer h-11 w-11 p-1 text-center rounded-3xl"
+                                style={{
+                                    background: `${currentSticker == sticker ? 'rgba(112, 79, 61, 1)' : 'none'}`,
+                                }}
+                                key={i}
+                                onClick={handleStickerClick}
+                            >
                                 {sticker}
                             </p>
                         ))}

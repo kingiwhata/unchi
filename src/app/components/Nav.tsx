@@ -42,7 +42,7 @@ export default function Nav({
                     {'>'}
                 </p>
             </div>
-            <div className="flex flex-row w-fit">
+            <div className="flex flex-row w-fit justify-end">
                 <Image
                     className="h-auto w-auto"
                     src="/unchicat.png"

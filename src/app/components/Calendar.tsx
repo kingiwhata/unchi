@@ -41,6 +41,7 @@ export default function Calendar({
                                 className="text-sm border-b border-r  border-black "
                                 onClick={() => handleSelected(date)}
                             >
+                                {date.getDate()}
                                 {allLogs.map((log: any, i: number) => (
                                     <div key={i}>
                                         {log.date_time.toDateString() ==
@@ -51,8 +52,6 @@ export default function Calendar({
                                         )}
                                     </div>
                                 ))}
-
-                                {date.getDate()}
                             </div>
                         );
                     },

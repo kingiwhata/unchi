@@ -7,7 +7,7 @@ import { revalidatePath } from 'next/cache';
 const client = createClient();
 
 export default async function insertLog(
-    stickers: string[],
+    sticker: string,
     selectedDate: Date,
     formData: FormData,
 ) {
@@ -17,8 +17,8 @@ export default async function insertLog(
         const [hours, minutes] = formData.get('time')!.toString().split(':');
         const date = new Date(+year, +month - 1, +day, +hours, +minutes, 0);
         let userID = cookies().get('uuid')!.value;
-        await sql`INSERT INTO log (date_time, created_at, notes, stickers, user_id)
-        VALUES (to_timestamp(${date.getTime()} / 1000.0), to_timestamp(${Date.now()} / 1000.0), ${formData.get('noteText')}, ${stickers}, ${userID})`;
+        await sql`INSERT INTO log (date_time, created_at, notes, sticker, user_id)
+        VALUES (to_timestamp(${date.getTime()} / 1000.0), to_timestamp(${Date.now()} / 1000.0), ${formData.get('noteText')}, ${sticker}, ${userID})`;
     } catch (err) {
         console.error('Inserting in to log error: ', err);
     } finally {
@@ -41,7 +41,7 @@ export async function initUserLog() {
     try {
         await sql`CREATE TABLE IF NOT EXISTS Log (
             id SERIAL PRIMARY KEY,
-            stickers TEXT [],
+            sticker TEXT, 
             notes TEXT,
             date_time TIMESTAMP,
             created_at TIMESTAMP,
