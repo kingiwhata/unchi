@@ -1,4 +1,5 @@
 import { getPreviousMonth } from '@/utils/dates';
+import Image from 'next/image';
 import React from 'react';
 
 export default function Nav({
@@ -42,8 +43,19 @@ export default function Nav({
                 </p>
             </div>
             <div className="flex flex-row w-fit">
-                <img src="unchicat.png" className="w-20 h-20" />
-                <img src="unchidog.png" className="w-20 h-20" />
+                <Image
+                    src="/unchicat.png"
+                    width={80}
+                    height={80}
+                    alt="Picture of a cartoon cat"
+                />
+
+                <Image
+                    src="/unchidog.png"
+                    width={80}
+                    height={80}
+                    alt="Picture of a cartoon dog"
+                />
             </div>
         </section>
     );

@@ -1,7 +1,7 @@
 //@ts-nocheck
 'use server';
 import { randomUUID } from 'crypto';
-import { Client, createClient, sql } from '@vercel/postgres';
+import { createClient, sql } from '@vercel/postgres';
 import { cookies } from 'next/headers';
 
 const client = createClient();

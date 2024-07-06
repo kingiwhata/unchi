@@ -42,7 +42,7 @@ export default function Calendar({
                                 onClick={() => handleSelected(date)}
                             >
                                 {allLogs.map((log: any, i: number) => (
-                                    <div>
+                                    <div key={i}>
                                         {log.date_time.toDateString() ==
                                         date.toDateString() ? (
                                             <p>{log.stickers[0]}</p>
