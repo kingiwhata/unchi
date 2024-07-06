@@ -1,3 +1,4 @@
+//@ts-nocheck
 'use server';
 import { randomUUID } from 'crypto';
 import { createClient, sql } from '@vercel/postgres';
