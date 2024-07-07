@@ -38,6 +38,16 @@ export default function Calendar({
             <div className="grid grid-cols-7 grid-rows-6 h-[calc(100%-1.75rem)]  [&>*:nth-child(7n)]:border-r-[0] [&>*:nth-last-child(-n+7)]:border-b-[0]">
                 {getDates(date.getMonth() + 1, date.getFullYear()).map(
                     (date: Date, i: number) => {
+                        let firstSticker = '';
+                        for (const log of allLogs) {
+                            if (
+                                log.date_time.toDateString() ===
+                                date.toDateString()
+                            ) {
+                                firstSticker = log.sticker;
+                                break; // Stop after finding the first sticker for the date
+                            }
+                        }
                         return (
                             <div
                                 key={i}
@@ -45,16 +55,7 @@ export default function Calendar({
                                 onClick={() => handleSelected(date)}
                             >
                                 {date.getDate()}
-                                {allLogs.map((log: any, i: number) => (
-                                    <div key={i}>
-                                        {log.date_time.toDateString() ==
-                                        date.toDateString() ? (
-                                            <p>{log.sticker}</p>
-                                        ) : (
-                                            <p></p>
-                                        )}
-                                    </div>
-                                ))}
+                                {firstSticker}
                             </div>
                         );
                     },

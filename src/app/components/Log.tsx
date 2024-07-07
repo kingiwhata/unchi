@@ -33,7 +33,6 @@ export default function Log({ date }: { date: Date }) {
                     </h2>
                     <input
                         className="bg-transparent font-bold text-2xl"
-                        id="time"
                         type="time"
                         name="time"
                         defaultValue={new Date().toTimeString().substring(0, 5)}
@@ -66,7 +65,6 @@ export default function Log({ date }: { date: Date }) {
                     <input
                         className="p-2 rounded-lg bg-transparent placeholder-[rgb(112,79,61)]"
                         placeholder="Enter Text..."
-                        id="noteText"
                         name="noteText"
                     ></input>
                 </div>

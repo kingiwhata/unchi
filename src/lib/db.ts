@@ -1,11 +1,8 @@
-//@ts-nocheck
 'use server';
 import { randomUUID } from 'crypto';
-import { createClient, sql } from '@vercel/postgres';
+import { sql } from '@vercel/postgres';
 import { cookies } from 'next/headers';
 import { revalidatePath } from 'next/cache';
-
-const client = createClient();
 
 export default async function insertLog(
     sticker: string,
@@ -18,12 +15,20 @@ export default async function insertLog(
         const [hours, minutes] = formData.get('time')!.toString().split(':');
         const date = new Date(+year, +month - 1, +day, +hours, +minutes, 0);
         let userID = cookies().get('uuid')!.value;
-        await sql`INSERT INTO log (date_time, created_at, notes, sticker, user_id)
-        VALUES (to_timestamp(${date.getTime()} / 1000.0), to_timestamp(${Date.now()} / 1000.0), ${formData.get('noteText')}, ${sticker}, ${userID})`;
+        const noteText = formData.get('noteText') as string | null;
+        await sql`
+            INSERT INTO log (date_time, created_at, notes, sticker, user_id)
+            VALUES (
+                to_timestamp(${date.getTime()} / 1000.0),
+                to_timestamp(${Date.now()} / 1000.0),
+                ${noteText},
+                ${sticker},
+                ${userID}
+            )
+        `;
+        revalidatePath('/');
     } catch (err) {
         console.error('Inserting in to log error: ', err);
-    } finally {
-        await client.end();
     }
 }
 
