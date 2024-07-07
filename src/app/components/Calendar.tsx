@@ -6,22 +6,13 @@ import React, { useState, useEffect } from 'react';
 export default function Calendar({
     date,
     handleSelected,
+    logs,
 }: {
     date: Date;
     handleSelected: (date: Date) => void;
+    logs: any;
 }) {
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    const logsQuery: QueryResultRow[] = [];
-    const [allLogs, setAllLogs] = useState(logsQuery);
-
-    const getSession = async () => {
-        const userLogs = await getAllLogs();
-        setAllLogs(userLogs || []);
-    };
-
-    useEffect(() => {
-        getSession();
-    }, []);
 
     return (
         <section className="h-[390px] outline outline-4 mx-2 mb-2 border-black rounded-[16px]">
@@ -39,23 +30,23 @@ export default function Calendar({
                 {getDates(date.getMonth() + 1, date.getFullYear()).map(
                     (date: Date, i: number) => {
                         let firstSticker = '';
-                        for (const log of allLogs) {
+                        for (const log of logs) {
                             if (
                                 log.date_time.toDateString() ===
                                 date.toDateString()
                             ) {
                                 firstSticker = log.sticker;
-                                break; // Stop after finding the first sticker for the date
+                                break;
                             }
                         }
                         return (
                             <div
                                 key={i}
-                                className="text-sm border-b border-r  border-black "
+                                className="text-sm border-b border-r cursor-pointer border-black "
                                 onClick={() => handleSelected(date)}
                             >
-                                {date.getDate()}
-                                {firstSticker}
+                                <p>{date.getDate()}</p>
+                                <p className="text-center">{firstSticker}</p>
                             </div>
                         );
                     },
