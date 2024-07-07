@@ -2,6 +2,7 @@
 import insertLog from '@/lib/db';
 import React from 'react';
 import { useState } from 'react';
+import { SubmitButton } from './SubmitLogButton';
 
 export default function Log({ date }: { date: Date }) {
     const stickerArray = ['🐭', '🐰', '🐶', '🐮', '🐻'];
@@ -57,7 +58,6 @@ export default function Log({ date }: { date: Date }) {
                         ))}
                     </div>
                 </div>
-
                 <div className="flex justify-center items-center flex-col">
                     <h2 className="flex justify-center text-xs font-bold">
                         Notes
@@ -69,12 +69,7 @@ export default function Log({ date }: { date: Date }) {
                         name="noteText"
                     ></input>
                 </div>
-                <button
-                    className="p-2 w-1/2 text-2xl font-bold rounded-lg"
-                    type="submit"
-                >
-                    Save
-                </button>
+                <SubmitButton />
             </form>
         </section>
     );
