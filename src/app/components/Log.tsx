@@ -1,13 +1,12 @@
 'use client';
 import insertLog from '@/lib/db';
-import React from 'react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { SubmitButton } from './SubmitLogButton';
 
 export default function Log({ date }: { date: Date }) {
     const stickerArray = ['🐭', '🐰', '🐶', '🐮', '🐻'];
-    const initialSticker: string = '';
-    const [currentSticker, setCurrentSticker] = useState(initialSticker);
+    const [currentSticker, setCurrentSticker] = useState('');
+    const formRef = useRef<HTMLFormElement>(null);
 
     const handleStickerClick = (e: any) => {
         const clickedSticker = e.target.innerText;
@@ -18,9 +17,11 @@ export default function Log({ date }: { date: Date }) {
     return (
         <section className="flex flex-col justify-center items-center flex-1 m-2 bg-[url('/bg-unchi.jpg')] rounded-[16px]">
             <form
+                ref={formRef}
                 className="flex flex-col justify-center items-center gap-3"
                 action={async (formData) => {
                     await insertLog(currentSticker, date, formData);
+                    formRef.current?.reset();
                 }}
             >
                 <div className="flex text-3xl font-bold">
