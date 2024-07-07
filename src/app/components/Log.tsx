@@ -15,13 +15,13 @@ export default function Log({ date }: { date: Date }) {
         setCurrentSticker(clickedSticker);
     };
 
-    const insertToLog = insertLog.bind(null, currentSticker, date);
-
     return (
         <section className="flex flex-col justify-center items-center flex-1 m-2 bg-[url('/bg-unchi.jpg')] rounded-[16px]">
             <form
                 className="flex flex-col justify-center items-center gap-3"
-                action={insertToLog}
+                action={async (formData) => {
+                    await insertLog(currentSticker, date, formData);
+                }}
             >
                 <div className="flex text-3xl font-bold">
                     {date.toDateString()}
