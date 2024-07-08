@@ -1,10 +1,10 @@
 'use client';
 import Nav from './components/Nav';
 import Calendar from './components/Calendar';
-import Log from './components/Log';
+import UserLog from './components/Log';
 import { useEffect, useState } from 'react';
 import { initUserLog, getAllLogs } from '@/lib/db';
-import { QueryResultRow } from '@vercel/postgres';
+import { Log } from '@/types/Log';
 
 export default function Home() {
     useEffect(() => {
@@ -23,7 +23,7 @@ export default function Home() {
         setSelectedDate(selectedDate);
     };
 
-    const logsQuery: QueryResultRow[] = [];
+    const logsQuery: Log[] = [];
     const [allLogs, setAllLogs] = useState(logsQuery);
 
     const getSession = async () => {
@@ -39,7 +39,7 @@ export default function Home() {
                 handleSelected={handleSelectDate}
                 logs={allLogs}
             />
-            <Log date={selectedDate} />
+            <UserLog date={selectedDate} />
         </main>
     );
 }

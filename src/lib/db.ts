@@ -3,6 +3,7 @@ import { randomUUID } from 'crypto';
 import { sql } from '@vercel/postgres';
 import { cookies } from 'next/headers';
 import { revalidatePath } from 'next/cache';
+import { Log } from '@/types/Log';
 
 export default async function insertLog(
     sticker: string,
@@ -37,7 +38,7 @@ export async function getAllLogs() {
         const userID = cookies().get('uuid')!.value;
         const allUserLogs =
             await sql`SELECT * FROM log WHERE user_id=${userID}`;
-        return allUserLogs.rows;
+        return allUserLogs.rows as Log[];
     } catch (err) {
         console.error('Getting all logs error: ', err);
     }

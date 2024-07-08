@@ -1,7 +1,8 @@
 import { getAllLogs } from '@/lib/db';
 import { QueryResultRow } from '@vercel/postgres';
 import { getDates } from '@/utils/dates';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Log } from '@/types/Log';
 
 export default function Calendar({
     date,
@@ -10,7 +11,7 @@ export default function Calendar({
 }: {
     date: Date;
     handleSelected: (date: Date) => void;
-    logs: any;
+    logs: Log[];
 }) {
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
