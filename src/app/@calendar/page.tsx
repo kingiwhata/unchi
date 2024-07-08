@@ -1,6 +1,6 @@
 'use client';
 import Calendar from '../components/Calendar';
-import { useDataContext } from '../components/Provider';
+import { useDataContext } from '@/utils/Provider';
 
 export default function CalendarPage() {
     const { date, setSelectedDate, allLogs } = useDataContext();

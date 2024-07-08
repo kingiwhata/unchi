@@ -2,15 +2,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import Log from '@/types/Log';
 import { initUserLog, getAllLogs } from '@/lib/db';
-
-interface DataContextType {
-    date: Date;
-    setDate: (date: Date) => void;
-    selectedDate: Date;
-    setSelectedDate: (date: Date) => void;
-    allLogs: Log[];
-    setAllLogs: (logs: Log[]) => void;
-}
+import DataContextType from '@/types/DataContext';
 
 export const DataContext = createContext<DataContextType | undefined>(
     undefined,

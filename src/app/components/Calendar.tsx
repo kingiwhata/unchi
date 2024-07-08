@@ -1,7 +1,7 @@
 'use client';
 import { getDates } from '@/utils/dates';
 import Log from '@/types/Log';
-import { useDataContext } from './Provider';
+import { useDataContext } from '@/utils/Provider';
 
 export default function Calendar({
     date,

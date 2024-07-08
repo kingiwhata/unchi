@@ -1,6 +1,6 @@
 'use client';
 import UserLog from './components/Log';
-import { useDataContext } from './components/Provider';
+import { useDataContext } from '@/utils/Provider';
 
 export default function Home() {
     const { selectedDate, allLogs } = useDataContext();

@@ -2,7 +2,7 @@
 import { getPreviousMonth } from '@/utils/dates';
 import Image from 'next/image';
 import React from 'react';
-import { useDataContext } from './Provider';
+import { useDataContext } from '@/utils/Provider';
 
 export default function Nav() {
     const { date, setDate } = useDataContext();

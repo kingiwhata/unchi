@@ -2,8 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Permanent_Marker } from 'next/font/google';
 import './globals.css';
 import Nav from './components/Nav';
-import Calendar from './components/Calendar';
-import { DataProvider } from './components/Provider';
+import { DataProvider } from '@/utils/Provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
