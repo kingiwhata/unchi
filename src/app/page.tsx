@@ -2,20 +2,18 @@
 import Nav from './components/Nav';
 import Calendar from './components/Calendar';
 import UserLog from './components/Log';
-import { useEffect, useState } from 'react';
+import { useEffect, useContext } from 'react';
 import { initUserLog, getAllLogs } from '@/lib/db';
-import Log from '@/types/Log';
+
+import { useDataContext } from './components/Provider';
 
 export default function Home() {
+    const { date, setDate, selectedDate, setSelectedDate, allLogs } =
+        useDataContext();
+
     useEffect(() => {
         initUserLog();
-        async () => {
-            setAllLogs(await getAllLogs());
-        };
     }, []);
-
-    const [date, setDate] = useState(new Date());
-    const [selectedDate, setSelectedDate] = useState(new Date());
 
     const handleMonthClick = (date: Date) => {
         setDate(date);
@@ -24,9 +22,6 @@ export default function Home() {
     const handleSelectDate = (selectedDate: Date) => {
         setSelectedDate(selectedDate);
     };
-
-    const logsQuery: Log[] = [];
-    const [allLogs, setAllLogs] = useState(logsQuery);
 
     return (
         <main className="h-full w-full flex flex-col">

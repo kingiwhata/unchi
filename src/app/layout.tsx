@@ -3,6 +3,7 @@ import { Inter, Permanent_Marker } from 'next/font/google';
 import './globals.css';
 import Nav from './components/Nav';
 import Calendar from './components/Calendar';
+import { DataProvider } from './components/Provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,7 +28,7 @@ export default function RootLayout({
             <body
                 className={`${inter.className} ${marker.variable} h-svh w-svw`}
             >
-                {children}
+                <DataProvider>{children}</DataProvider>
             </body>
         </html>
     );
