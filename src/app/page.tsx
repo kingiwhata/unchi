@@ -39,7 +39,7 @@ export default function Home() {
                 handleSelected={handleSelectDate}
                 logs={allLogs}
             />
-            <UserLog date={selectedDate} />
+            <UserLog date={selectedDate} logs={allLogs} />
         </main>
     );
 }
