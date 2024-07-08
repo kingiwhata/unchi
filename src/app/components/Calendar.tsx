@@ -1,6 +1,7 @@
+'use client';
 import { getDates } from '@/utils/dates';
-import React from 'react';
 import Log from '@/types/Log';
+import { useDataContext } from './Provider';
 
 export default function Calendar({
     date,
@@ -8,7 +9,7 @@ export default function Calendar({
     logs,
 }: {
     date: Date;
-    handleSelected: (date: Date) => void;
+    handleSelected: any;
     logs: Log[];
 }) {
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];

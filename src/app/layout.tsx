@@ -20,15 +20,23 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
     children,
+    calendar,
 }: Readonly<{
     children: React.ReactNode;
+    calendar: React.ReactNode;
 }>) {
     return (
         <html lang="en">
             <body
                 className={`${inter.className} ${marker.variable} h-svh w-svw`}
             >
-                <DataProvider>{children}</DataProvider>
+                <DataProvider>
+                    <main className="h-full w-full flex flex-col">
+                        <Nav />
+                        {calendar}
+                        {children}
+                    </main>
+                </DataProvider>
             </body>
         </html>
     );

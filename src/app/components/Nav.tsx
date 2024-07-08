@@ -1,21 +1,19 @@
+'use client';
 import { getPreviousMonth } from '@/utils/dates';
 import Image from 'next/image';
 import React from 'react';
+import { useDataContext } from './Provider';
 
-export default function Nav({
-    handleClick,
-    date,
-}: {
-    handleClick: (date: Date) => void;
-    date: Date;
-}) {
+export default function Nav() {
+    const { date, setDate } = useDataContext();
+
     return (
         <section className="flex flex-row justify-between bg-white h-20 w-full px-2 pt-1">
             <div className="flex flex-row justify-center">
                 <p
                     className="cursor-pointer"
                     onClick={() =>
-                        handleClick(
+                        setDate(
                             getPreviousMonth(
                                 date.getMonth() - 1,
                                 date.getFullYear(),
@@ -31,7 +29,7 @@ export default function Nav({
                 <p
                     className="cursor-pointer"
                     onClick={() =>
-                        handleClick(
+                        setDate(
                             getPreviousMonth(
                                 date.getMonth() + 1,
                                 date.getFullYear(),
