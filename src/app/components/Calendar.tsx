@@ -1,8 +1,6 @@
-import { getAllLogs } from '@/lib/db';
-import { QueryResultRow } from '@vercel/postgres';
 import { getDates } from '@/utils/dates';
 import React from 'react';
-import { Log } from '@/types/Log';
+import Log from '@/types/Log';
 
 export default function Calendar({
     date,

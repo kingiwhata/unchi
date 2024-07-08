@@ -4,12 +4,14 @@ import Calendar from './components/Calendar';
 import UserLog from './components/Log';
 import { useEffect, useState } from 'react';
 import { initUserLog, getAllLogs } from '@/lib/db';
-import { Log } from '@/types/Log';
+import Log from '@/types/Log';
 
 export default function Home() {
     useEffect(() => {
         initUserLog();
-        getSession();
+        async () => {
+            setAllLogs(await getAllLogs());
+        };
     }, []);
 
     const [date, setDate] = useState(new Date());
@@ -25,11 +27,6 @@ export default function Home() {
 
     const logsQuery: Log[] = [];
     const [allLogs, setAllLogs] = useState(logsQuery);
-
-    const getSession = async () => {
-        const userLogs = await getAllLogs();
-        setAllLogs(userLogs || []);
-    };
 
     return (
         <main className="h-full w-full flex flex-col">

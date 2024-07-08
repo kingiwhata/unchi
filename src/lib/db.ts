@@ -41,6 +41,7 @@ export async function getAllLogs() {
         return allUserLogs.rows as Log[];
     } catch (err) {
         console.error('Getting all logs error: ', err);
+        return [];
     }
 }
 

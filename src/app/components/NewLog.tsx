@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { SubmitButton } from './SubmitLogButton';
 import insertLog from '@/lib/db';
 
-export function NewLog({ date }: { date: Date }) {
+export default function NewLog({ date }: { date: Date }) {
     const stickerArray = ['🐭', '🐰', '🐶', '🐮', '🐻'];
     const [currentSticker, setCurrentSticker] = useState('🐭');
     const formRef = useRef<HTMLFormElement>(null);
