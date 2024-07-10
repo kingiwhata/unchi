@@ -15,7 +15,7 @@ export default async function insertLog(
         const [day, month, year] = dateString.split('/');
         const [hours, minutes] = formData.get('time')!.toString().split(':');
         const date = new Date(+year, +month - 1, +day, +hours, +minutes, 0);
-        let userID = cookies().get('uuid')!.value;
+        const userID = cookies().get('uuid')!.value;
         const noteText = formData.get('noteText') as string | null;
         await sql`
             INSERT INTO log (date_time, created_at, notes, sticker, user_id)

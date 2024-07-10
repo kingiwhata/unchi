@@ -7,8 +7,7 @@ export default function NewLog({ date }: { date: Date }) {
     const [currentSticker, setCurrentSticker] = useState('🐭');
     const formRef = useRef<HTMLFormElement>(null);
 
-    const handleStickerClick = (e: any) => {
-        const clickedSticker = e.target.innerText;
+    const handleStickerClick = (clickedSticker: string) => {
         if (clickedSticker == currentSticker) return;
         setCurrentSticker(clickedSticker);
     };
@@ -46,7 +45,11 @@ export default function NewLog({ date }: { date: Date }) {
                                 background: `${currentSticker == sticker ? 'rgba(112, 79, 61, 1)' : 'none'}`,
                             }}
                             key={i}
-                            onClick={handleStickerClick}
+                            onClick={(e) =>
+                                handleStickerClick(
+                                    (e.target as HTMLElement).innerText,
+                                )
+                            }
                         >
                             {sticker}
                         </p>
