@@ -8,7 +8,7 @@ export default function Calendar({
     logs,
 }: {
     date: Date;
-    handleSelected: any;
+    handleSelected: (date: Date) => void;
     logs: Log[];
 }) {
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
