@@ -3,7 +3,7 @@ import { randomUUID } from 'crypto';
 import { sql } from '@vercel/postgres';
 import { cookies } from 'next/headers';
 import { revalidatePath } from 'next/cache';
-import { Log } from '@/types/Log';
+import Log from '@/types/Log';
 
 export default async function insertLog(
     sticker: string,
