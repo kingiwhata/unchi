@@ -1,7 +1,6 @@
 'use client';
 import LogType from '@/types/Log';
 import { useDataContext } from '@/utils/Provider';
-import Link from 'next/link';
 import { useState } from 'react';
 import NewLog from './NewLog';
 
@@ -10,7 +9,6 @@ export default function LogEntry({ log }: { log: LogType }) {
     const loggedTime = log.date_time.toTimeString().substring(0, 8);
     const [showNew, setShowNew] = useState(false);
 
-    const dateHref = selectedDate.toDateString().split(' ').join('-');
     return (
         <div className="w-full">
             {!showNew && (
