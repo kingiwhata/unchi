@@ -3,6 +3,7 @@ import { Inter, Permanent_Marker } from 'next/font/google';
 import './globals.css';
 import Nav from './components/Nav';
 import { DataProvider } from '@/utils/Provider';
+import Calendar from './components/Calendar';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,10 +20,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
     children,
-    calendar,
 }: Readonly<{
     children: React.ReactNode;
-    calendar: React.ReactNode;
 }>) {
     return (
         <html lang="en">
@@ -32,7 +31,7 @@ export default function RootLayout({
                 <DataProvider>
                     <main className="h-full w-full flex flex-col">
                         <Nav />
-                        {calendar}
+                        <Calendar />
                         {children}
                     </main>
                 </DataProvider>

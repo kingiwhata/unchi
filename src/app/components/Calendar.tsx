@@ -1,26 +1,13 @@
 'use client';
 import { getDates } from '@/utils/dates';
-import Log from '@/types/Log';
 import Link from 'next/link';
+import { useDataContext } from '@/utils/Provider';
 
-export default function Calendar({
-    date,
-    handleSelected,
-    selectedDate,
-    logs,
-}: {
-    date: Date;
-    selectedDate: Date;
-    handleSelected: (date: Date) => void;
-    logs: Log[];
-}) {
+export default function Calendar({}: {}) {
+    const { date, selectedDate, setSelectedDate, allLogs } = useDataContext();
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
     return (
-        <Link
-            href={`new/${selectedDate.toDateString().split(' ').join('-')}`}
-            replace
-        >
+        <Link href={`/new/${selectedDate.toDateString().split(' ').join('-')}`}>
             <section className="h-[390px] outline outline-4 mx-2 mb-2 border-black rounded-[16px]">
                 <div className="flex justify-between h-7 border-black border-b bg-white">
                     {daysOfWeek.map((day: string, i: number) => (
@@ -33,7 +20,7 @@ export default function Calendar({
                     {getDates(date.getMonth() + 1, date.getFullYear()).map(
                         (date: Date, i: number) => {
                             let firstSticker = '';
-                            for (const log of logs) {
+                            for (const log of allLogs) {
                                 if (
                                     log.date_time.toDateString() ===
                                     date.toDateString()
@@ -46,9 +33,7 @@ export default function Calendar({
                                 <div
                                     key={i}
                                     className="text-sm border-b border-r cursor-pointer border-black "
-                                    onClick={() => {
-                                        handleSelected(date);
-                                    }}
+                                    onClick={() => setSelectedDate(date)}
                                 >
                                     <p>{date.getDate()}</p>
                                     <p className="text-center">

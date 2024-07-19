@@ -1,5 +1,5 @@
 'use client';
-import NewLog from '../../../components/NewLog';
+import NewLog from '../../components/NewLog';
 
 export default function NewLogPage({ params }: { params: { date: string } }) {
     const reDate = new Date(params.date.split('-').join(' '));
