@@ -1,4 +1,5 @@
 'use client';
+import { useDataContext } from '@/utils/Provider';
 import NewLog from '../../components/NewLog';
 
 export default function NewLogPage({ params }: { params: { date: string } }) {
