@@ -10,7 +10,6 @@ export default function Calendar({}: {}) {
 
     const handleDateClick = (date: Date) => {
         setSelectedDate(date);
-        router.push(`/new/${date.toDateString().split(' ').join('-')}`);
     };
 
     return (
