@@ -10,7 +10,6 @@ export default function PreviousLog({
 }) {
     for (const log of logs) {
         if (log.date_time.toDateString() === date.toDateString()) {
-            console.log(log);
             return <LogEntry log={log} />;
         }
     }

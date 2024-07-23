@@ -51,7 +51,7 @@ export async function initUserLog() {
             id SERIAL PRIMARY KEY,
             sticker TEXT, 
             notes TEXT,
-            date_time TIMESTAMP,
+            date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             created_at TIMESTAMP,
             user_id UUID 
         )`;
