@@ -18,10 +18,9 @@ export default async function insertLog(
         const userID = cookies().get('uuid')!.value;
         const noteText = formData.get('noteText') as string | null;
         await sql`
-            INSERT INTO log (date_time, created_at, notes, sticker, user_id)
+            INSERT INTO log (date_time, notes, sticker, user_id)
             VALUES (
                 to_timestamp(${date.getTime()} / 1000.0),
-                to_timestamp(${Date.now()} / 1000.0),
                 ${noteText},
                 ${sticker},
                 ${userID}
